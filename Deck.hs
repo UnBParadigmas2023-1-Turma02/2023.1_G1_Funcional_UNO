@@ -1,3 +1,5 @@
+module Deck where
+
 import Types
 
 import System.Random
