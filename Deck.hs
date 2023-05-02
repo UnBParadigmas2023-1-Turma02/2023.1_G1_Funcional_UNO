@@ -17,8 +17,18 @@ deck = listNumberColor ++ listSpecialsColor
 cardToString :: Card -> String
 cardToString (Card typeCard color value) = show typeCard ++ " " ++ show color ++ " " ++ show value
 
+drawCard :: Deck -> (Card, Deck)
+drawCard deck = (head deck, tail deck)
+
 main :: IO ()
 main = do
   --mapM_ (putStrLn . cardToString) deck -- Deck normal
   shuffled <- shuffleM deck
-  mapM_ (putStrLn . cardToString) shuffled -- Deck embaralhado
+  mapM_ (putStrLn . cardToString) shuffled -- Deck embaralhado -> https://hackage.haskell.org/package/random-shuffle-0.0.4/docs/System-Random-Shuffle.html
+  putStrLn ("Comprimento da lista: " ++ show (length shuffled))
+  let cartaTopo = head shuffled
+  shuffled <- return (tail shuffled)
+  print "\n\nAQUI ACABOU O PRIMEIRO\n\n"
+  putStrLn (cardToString cartaTopo)
+  mapM_ (putStrLn . cardToString) shuffled -- Deck embaralhado -> https://hackage.haskell.org/package/random-shuffle-0.0.4/docs/System-Random-Shuffle.html
+  
