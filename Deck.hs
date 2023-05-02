@@ -39,4 +39,4 @@ main = do
 
   -- Como atualizar a cartaTopo
   let cartaTopo = Card Number Yellow One
-  -- putStrLn (cardToString cartaTopo)
+  putStrLn (cardToString cartaTopo)
