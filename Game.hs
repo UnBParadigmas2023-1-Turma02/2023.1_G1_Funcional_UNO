@@ -6,18 +6,6 @@ import System.Random
 import System.Random.Shuffle
 
 
--- definição dos tipos de dados
--- Player = (String name, Hand)
--- data PlayersQueue queue = [Player]
-
-
--- Identifica o próximo jogador e a nova Fila de Jogadores
--- nextToPlay :: [Player] -> (Player, [Player])
--- nextToPlay (head:tail) = 
---     let (nextPlayer) = head
---    in (nextPlayer, tail:nextPlayer)
-
-
 -- Distribui 7 cartas cada jogador
 dealCards :: Deck -> [Player] -> ([Player], Deck)
 dealCards d [] = ([], d)
@@ -26,7 +14,6 @@ dealCards d ((name, hand):players) =
         newPlayer = (name, hand ++ newHand)
         (updatedPlayers, finalDeck) = dealCards newDeck players
     in (newPlayer : updatedPlayers, finalDeck)
-
 
 playerToString :: Player -> String
 playerToString (name, hand) =

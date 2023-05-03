@@ -44,6 +44,19 @@ updatePlayerList idx newPlayer players = take idx players ++ [newPlayer] ++ drop
 dropCardAtIndex :: Int -> Player -> Player
 dropCardAtIndex index (name, hand) = (name, take (index - 1) hand ++ drop 1 (drop (index - 1) hand))
 
+-- Verifica se algum jogardor possui apenas 1 carta e imprime que ele está de UNO
+checkUno :: Player -> IO ()
+checkUno (name, [card]) = putStrLn (name ++ " has only one card! UNO!")
+checkUno _ = return ()
+
+-- Identifica vencedor
+checkWinner :: [Player] -> String
+checkWinner players =
+  case filter (\(_, hand) -> length hand == 0) players of
+    [(winnerName, _)] -> winnerName
+    _        -> ""
+
+
 -- Jogar uma rodada
 playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
@@ -75,11 +88,17 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Retira a cartaJogada da mão do Jogador
   let newPlayer = dropCardAtIndex playerNum playerAfterBuying
+
+  -- Verifica se o Jogador está de Uno
+  checkUno newPlayer
   
   return (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, (idxPlayer + 1) `mod` length players, direction)
 
 -- Jogar o jogo
 playGame :: GameState -> IO ()
+playGame (_, players, _, _, _) -- Condição de Parada caso exista um Vencedor
+  | (length nameWinner > 1) = putStrLn (nameWinner ++ " is the Winner!")
+  where nameWinner = checkWinner players
 playGame (deck, players, topCard, idxPlayer, direction) = do
   -- Seleciona o jogador que vai jogar no momento
   let curPlayer = players !! idxPlayer
