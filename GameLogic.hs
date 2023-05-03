@@ -1,6 +1,7 @@
 module GameLogic where
 
 import Deck
+import SpecialCards
 
 import Types
 
@@ -31,14 +32,6 @@ playerToString (name, hand) =
     showHand :: Hand -> String
     showHand [] = ""
     showHand (c:cs) = cardToString c ++ ", " ++ showHand cs
-
--- Comprar carta do Monte
-buyCardFromDeck :: Deck -> Player -> (Deck, Player)
-buyCardFromDeck (c:cs) (name, hand) = (cs, (name, hand ++ [c]))
-
--- Atualiza a lista de jogadores
-updatePlayerList :: Int -> a -> [a] -> [a]
-updatePlayerList idx newPlayer players = take idx players ++ [newPlayer] ++ drop (idx+1) players
 
 -- Retira uma carta da lista
 dropCardAtIndex :: Int -> Player -> Player
@@ -88,6 +81,8 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Retira a cartaJogada da mão do Jogador
   let newPlayer = dropCardAtIndex playerNum playerAfterBuying
+
+  
 
   -- Verifica se o Jogador está de Uno
   checkUno newPlayer
