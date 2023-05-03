@@ -6,18 +6,6 @@ import System.Random
 import System.Random.Shuffle
 
 
--- definição dos tipos de dados
--- Player = (String name, Hand)
--- data PlayersQueue queue = [Player]
-
-
--- Identifica o próximo jogador e a nova Fila de Jogadores
--- nextToPlay :: [Player] -> (Player, [Player])
--- nextToPlay (head:tail) = 
---     let (nextPlayer) = head
---    in (nextPlayer, tail:nextPlayer)
-
-
 -- Distribui 7 cartas cada jogador
 dealCards :: Deck -> [Player] -> ([Player], Deck)
 dealCards d [] = ([], d)
@@ -26,7 +14,6 @@ dealCards d ((name, hand):players) =
         newPlayer = (name, hand ++ newHand)
         (updatedPlayers, finalDeck) = dealCards newDeck players
     in (newPlayer : updatedPlayers, finalDeck)
-
 
 playerToString :: Player -> String
 playerToString (name, hand) =
@@ -38,10 +25,20 @@ playerToString (name, hand) =
 
 test :: IO ()
 test = do
+  -- Deck embaralhado -> https://hackage.haskell.org/package/random-shuffle-0.0.4/docs/System-Random-Shuffle.html
   shuffled <- shuffleM deck
+
+  -- Distribuindo 7 cartas para N jogadores
+  -- let (players, remainingDeck) = dealCards shuffled [("Player1", []), ("Player2", [])]
+  -- let (players, remainingDeck) = dealCards shuffled [("Player1", []), ("Player2", []), ("Player3", [])]
   let (players, remainingDeck) = dealCards shuffled [("Player1", []), ("Player2", []), ("Player3", []), ("Player4", [])]
+  
+  -- Imprime mão embaralhada dos jogadores
   mapM_ (\(name, hand) -> putStrLn (name ++ "'s hand: " ++ show hand)) players
+  
+  -- Imprime Deck Restante
   putStrLn ("Remaining deck: " ++ show remainingDeck)
+  
   -- let (nextPlayer, queueToPlay) = nextToPlay players
   -- mapM_ (putStrLn . playerToString nextPlayer) 
   -- putStrLn (show queueToPlay)
