@@ -29,17 +29,35 @@ playerToString (name, hand) =
   name ++ "'s hand: " ++ showHand hand
   where
     showHand :: Hand -> String
-    showHand [] = "empty"
+    showHand [] = ""
     showHand (c:cs) = cardToString c ++ ", " ++ showHand cs
 
+-- Comprar carta do Monte
+buyCardFromDeck :: Deck -> Player -> (Deck, Player)
+buyCardFromDeck (c:cs) (name, hand) = (cs, (name, hand ++ [c]))
+
+-- Atualiza a lista de jogadores
+updatePlayerList :: Int -> a -> [a] -> [a]
+updatePlayerList idx newPlayer players = take idx players ++ [newPlayer] ++ drop (idx+1) players
+
+-- Retira uma carta da lista
+dropCardAtIndex :: Int -> Player -> Player
+dropCardAtIndex index (name, hand) = (name, take (index - 1) hand ++ drop 1 (drop (index - 1) hand))
+
+-- Jogar uma rodada
 playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Imprime o Jogador + Mão
   putStrLn (playerToString player) 
 
-  -- SISTEMA DE COMPRA
-  -- ATUALIZA DECK
+  -- Compra carta do monte
+  putStrLn "Quer comprar uma carta do monte? (s/n)"
+  choice <- getLine
+  let (newDeck, playerAfterBuying) = if choice == "s" then buyCardFromDeck deck player else (deck, player)  
+
+  -- Imprime o Jogador + Mão
+  putStrLn (playerToString playerAfterBuying) 
 
   -- Pergunta o INDEX da carta que o jogador deseja jogar (MELHORAR ESSA FUNÇÃO)
   putStrLn "Qual carta deseja jogar? "
@@ -55,10 +73,12 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- PULAR A JOGADA (se comprou carta e não deu pra jogar)
 
-  -- RETIRAR A CARTAJOGADA DA MÃO DO JOGADOR
+  -- Retira a cartaJogada da mão do Jogador
+  let newPlayer = dropCardAtIndex playerNum playerAfterBuying
   
-  return (deck, players, cartaJogada, (idxPlayer + 1) `mod` length players, direction)
+  return (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, (idxPlayer + 1) `mod` length players, direction)
 
+-- Jogar o jogo
 playGame :: GameState -> IO ()
 playGame (deck, players, topCard, idxPlayer, direction) = do
   -- Seleciona o jogador que vai jogar no momento
