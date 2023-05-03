@@ -16,4 +16,4 @@ data Card = Card TypeCard Color Value deriving (Show, Eq)
 type Deck = [Card]
 type Hand = [Card]
 type Player = (String, Hand)
-type GameState = (Deck, [Player], Card)
+type GameState = (Deck, [Player], Card, Int, Int)
