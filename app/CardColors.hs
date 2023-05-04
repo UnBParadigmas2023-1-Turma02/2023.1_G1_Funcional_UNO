@@ -1,8 +1,8 @@
 module CardColors
-(numerosVermelhos
-,numerosAmarelos
-,numerosAzuis
-,numerosVerdes
+(redCards
+,yellowCards
+,blueCards
+,greenCards
 ,cardValueNumber
 ,arrayColorCard
 ) where 
@@ -10,7 +10,7 @@ module CardColors
 import Types
 
 
-numerosVermelhos = [ "\x1b[31m0\x1b[0m"
+redCards = [ "\x1b[31m0\x1b[0m"
                    , "\x1b[31m1\x1b[0m"
                    , "\x1b[31m2\x1b[0m"
                    , "\x1b[31m3\x1b[0m"
@@ -23,7 +23,7 @@ numerosVermelhos = [ "\x1b[31m0\x1b[0m"
                    , "\x1b[31m+2\x1b[0m"
                    ]
 
-numerosAmarelos = [ "\x1b[33m0\x1b[0m"
+yellowCards = [ "\x1b[33m0\x1b[0m"
                  , "\x1b[33m1\x1b[0m"
                  , "\x1b[33m2\x1b[0m"
                  , "\x1b[33m3\x1b[0m"
@@ -36,7 +36,7 @@ numerosAmarelos = [ "\x1b[33m0\x1b[0m"
                  , "\x1b[33m+2\x1b[0m"
                  ]
 
-numerosAzuis = [ "\x1b[34m0\x1b[0m"
+blueCards = [ "\x1b[34m0\x1b[0m"
               , "\x1b[34m1\x1b[0m"
               , "\x1b[34m2\x1b[0m"
               , "\x1b[34m3\x1b[0m"
@@ -49,7 +49,7 @@ numerosAzuis = [ "\x1b[34m0\x1b[0m"
               , "\x1b[34m+2\x1b[0m"
               ]
 
-numerosVerdes = [ "\x1b[32m0\x1b[0m"
+greenCards = [ "\x1b[32m0\x1b[0m"
                , "\x1b[32m1\x1b[0m"
                , "\x1b[32m2\x1b[0m"
                , "\x1b[32m3\x1b[0m"
@@ -78,8 +78,8 @@ cardValueNumber (Nine)    = 9
 cardValueNumber _ = -1
 
 arrayColorCard :: Color -> [String]
-arrayColorCard (Red) = numerosVermelhos
-arrayColorCard (Blue) = numerosAzuis
-arrayColorCard (Green) = numerosVerdes
-arrayColorCard (Yellow) = numerosAmarelos
+arrayColorCard (Red) = redCards
+arrayColorCard (Blue) = blueCards
+arrayColorCard (Green) = greenCards
+arrayColorCard (Yellow) = yellowCards
 arrayColorCard _ = [""]
