@@ -6,7 +6,7 @@
 
 module Main where
 
-import CardColors
+import AuxCards
 import Types
 
 
@@ -29,7 +29,7 @@ msgWelcome = do
     putStrLn "|                                                                                                 |"
     putStrLn "|_________________________________________________________________________________________________|"
     putStrLn "|                                                                                                 |"
-    putStrLn "|                                              MENU                                               |"
+    putStrLn "|                                              HOME                                               |"
     putStrLn "|_________________________________________________________________________________________________|" 
     putStrLn "|                                                                                                 |"
     putStrLn "|                                          |1| START                                              |" 
@@ -41,21 +41,7 @@ msgWelcome = do
 msgNumPlayers :: IO()
 msgNumPlayers = do
     putStrLn ""
-    putStrLn " _________________________________________________________________________________________________ "
-    putStrLn "|_________________________________________________________________________________________________|"
-    putStrLn "|_________________________________________________________________________________________________|"
-    putStrLn "|                                                                                                 |"
-    putStrLn "|                                                                                                 |"
-    putStrLn "|                                                                                                 |"
-    putStrLn "|                                   ██╗░░░██╗███╗░░██╗░█████╗                                     |" 
-    putStrLn "|                                   ██║░░░██║████╗░██║██╔══██╗                                    |"
-    putStrLn "|                                   ██║░░░██║██╔██╗██║██║░░██║                                    |"
-    putStrLn "|                                   ██║░░░██║██║╚████║██║░░██║                                    |"
-    putStrLn "|                                   ╚██████╔╝██║░╚███║╚█████╔╝                                    |"
-    putStrLn "|                                    ╚═════╝ ╚═╝  ╚══╝ ╚════╝                                     |"
-    putStrLn "|                                                                                                 |"
-    putStrLn "|                                                                                                 |"
-    putStrLn "|_________________________________________________________________________________________________|"
+    putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
     putStrLn "|                                  DIGITE O NÚMERO DE JOGADORES                                   |"
     putStrLn "|_________________________________________________________________________________________________|" 
@@ -65,6 +51,34 @@ msgNumPlayers = do
     putStrLn "|                                        |3| TRÊS JOGADORES                                       |" 
     putStrLn "|                                        |4| QUADRO JOGADORES                                     |" 
     putStrLn "|                                        |0| SAIR DO JOGO                                         |" 
+    putStrLn "|_________________________________________________________________________________________________|"
+
+
+namePlayer :: String -> IO()
+namePlayer numberPlayer = do
+    putStrLn ""
+    putStrLn " _________________________________________________________________________________________________"
+    putStrLn "|                                                                                                 |"
+    putStrLn ("|                                  DIGITE O NOME DO JOGADOR "++ numberPlayer ++":                                    |")
+    putStrLn "|_________________________________________________________________________________________________|" 
+
+
+msgWin :: String -> IO()
+msgWin nomeJogador = do
+    let tamRowTotal = 97
+    let tamCaracteresFixed = 63 + length nomeJogador
+    let tamNecessarySpaces = tamRowTotal - tamCaracteresFixed
+    let spaces = concat (replicate tamNecessarySpaces  " ")
+
+    putStrLn ""
+
+    putStrLn " _________________________________________________________________________________________________"
+    putStrLn "|                                                                                                 |"
+    putStrLn ("|                                  PARABÉNS "++ nomeJogador ++ " você ganhou! 🎉🎉🎉" ++ spaces ++ "|")
+    putStrLn "|_________________________________________________________________________________________________|" 
+    putStrLn "|                                                                                                 |"
+    putStrLn "|                                        |0| SAIR DO JOGO                                         |" 
+    putStrLn "|                                        |1| JOGAR NOVAMENTE                                      |" 
     putStrLn "|_________________________________________________________________________________________________|"
 
 
@@ -91,14 +105,16 @@ displayCard (Card cardType color value) = do
 
 main :: IO ()
 main = do
-    let card = Card Number Red Zero
-    let card2 = Card Number Yellow Seven
-    let card3 = Card Number Green Nine
-    let card4 = Card Reverse Blue NoValue
-    let card5 = Card Block Red NoValue
-    displayCard card
-    displayCard card2
-    displayCard card3
-    displayCard card4
-    displayCard card5
+    -- let card = Card Number Red Zero
+    -- let card2 = Card Number Yellow Seven
+    -- let card3 = Card Number Green Nine
+    -- let card4 = Card Reverse Blue NoValue
+    -- let card5 = Card Block Red NoValue
+    -- displayCard card
+    -- displayCard card2
+    -- displayCard card3
+    -- displayCard card4
+    -- displayCard card5
+
+    -- msgWin "Fulano"
 
