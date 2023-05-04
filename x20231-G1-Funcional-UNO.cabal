@@ -28,25 +28,17 @@ version:            0.1.0.0
 -- A longer description of the package.
 -- description:
 
--- URL for the project homepage or repository.
-homepage:
-    https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO
-
 -- The license under which the package is released.
-license:            MIT
-
--- The file containing the license text.
-license-file:       LICENSE
+license:            NONE
 
 -- The package author(s).
-author:             Irwin Schmitt
+author:             NONE
 
 -- An email address to which users can send suggestions, bug reports, and patches.
-maintainer:         irwinschmitt@gmail.com
+maintainer:         NONE
 
 -- A copyright notice.
 -- copyright:
-category:           Game
 build-type:         Simple
 
 -- Extra doc files to be distributed with the package, such as a CHANGELOG or a README.
@@ -56,7 +48,7 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 
 common warnings
-    ghc-options: -Wall
+    ghc-options: -Wall -threaded
 
 executable x20231-G1-Funcional-UNO
     -- Import common warning flags.
@@ -72,10 +64,10 @@ executable x20231-G1-Funcional-UNO
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.16.4.0
+    build-depends:    base ^>=4.16.4.0, brick >=1.7, vty
 
     -- Directories containing source files.
     hs-source-dirs:   app
 
     -- Base language which the package is written in.
-    default-language: GHC2021
+    default-language: Haskell2010
