@@ -11,6 +11,8 @@ getCardType (Card Reverse _ _) = Reverse
 getCardType (Card Block _ _) = Block
 getCardType (Card Buy _ _) = Buy
 
+chooseNewColor :: Color
+chooseNewColor = Red
 
 dealReverseCard :: GameState -> GameState
 dealReverseCard g@(deck, players, topCard, idxPlayer, direction) = (deck, players, topCard, idxPlayer, direction*(-1)) 
@@ -52,7 +54,7 @@ dealBuyCard g@(deck, players, topCard, idxPlayer, direction) =
     in if numberOfBuy == 4
           then do
             let (Card typeCard _ value) = topCard
-            let corEscolhida = newColor
+            let corEscolhida = chooseNewColor
             let newTopCard = Card typeCard corEscolhida value
             let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! idxPlayer) numberOfBuy 
             (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+1, direction)
