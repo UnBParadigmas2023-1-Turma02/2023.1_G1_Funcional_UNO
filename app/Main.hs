@@ -14,12 +14,12 @@ import System.Random.Shuffle
 
 readPlayers :: IO [Player]
 readPlayers = do
-  putStr "Enter number of players: "
+  putStrLn "Enter number of players: "
   numPlayersStr <- getLine
   let numPlayers = read numPlayersStr :: Int
   players <- mapM (\n -> do
                     let i = 1
-                    putStr ("Enter name for player: ")
+                    putStrLn ("Enter name for player: ")
                     playerName <- getLine
                     return (playerName, [])) [1..numPlayers]
   return players

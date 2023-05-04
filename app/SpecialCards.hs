@@ -2,6 +2,10 @@ module SpecialCards where
 
 import Types
 
+modAcceptingNegative x n 
+        | x < 0 = n - mod (-x) n
+        | otherwise = mod x n
+
 -- Comprar carta do Monte
 buyCardFromDeck :: Deck -> Player -> (Deck, Player)
 buyCardFromDeck (c:cs) (name, hand) = (cs, (name, hand ++ [c]))
@@ -56,10 +60,10 @@ dealBuyCard g@(deck, players, topCard, idxPlayer, direction) =
             let (Card typeCard _ value) = topCard
             let corEscolhida = chooseNewColor
             let newTopCard = Card typeCard corEscolhida value
-            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer+1)) numberOfBuy 
+            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy 
             (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+1, direction)
           else
-            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer+1)) numberOfBuy
+            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy
             in (newDeck, updatePlayerList idxPlayer playerAfterBuying players, topCard, idxPlayer+1, direction)
 
  

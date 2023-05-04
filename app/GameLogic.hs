@@ -5,9 +5,7 @@ import SpecialCards
 
 import Types
 
-modAcceptingNegative x n 
-        | x < 0 = n - mod (-x) n
-        | otherwise = mod x n
+
 
 -- Imprime Card
 cardToString :: Card -> String
@@ -91,7 +89,7 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Verifica se o Jogador está de Uno
   checkUno newPlayer
-  
+  putStrLn newIdxPlayerAfterSpecialCards newDirectionAfterSpecialCards
   return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
