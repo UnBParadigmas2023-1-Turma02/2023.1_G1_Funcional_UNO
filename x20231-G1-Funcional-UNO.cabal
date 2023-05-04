@@ -24,7 +24,7 @@ extra-source-files:
     README.md
 
 executable x20231-G1-Funcional-UNO
-    main-is:          Game2.hs
+    main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
     other-modules: Deck, GameLogic, SpecialCards, Types
