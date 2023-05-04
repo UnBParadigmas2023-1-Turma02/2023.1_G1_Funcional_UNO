@@ -66,7 +66,7 @@ TEMPO: +/- 15min
 | Cibele Freitas Goudinho - @CibeleG | - | - |
 | Guilherme Brito Vilas Boas - @dev-brito | - | - |
 | Irwin Schmitt - @irwinschmitt | - | - |
-| Júlia Farias Sousa - @julisous | - | - |
+| Júlia Farias Sousa - @julisous | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Cibele| Boa |
 | Lameque Fernandes Azevedo - @LamequeFernandes | - | - |
 | Leonardo Milomes Vitoriano - @leonardomilv3 | - | - |
 | Thaís Rebouças de Araujo - @Thais-ra | - | - |
