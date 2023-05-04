@@ -1,4 +1,4 @@
-module CardColors
+module AuxCards
 (redCards
 ,yellowCards
 ,blueCards
