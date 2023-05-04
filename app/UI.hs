@@ -105,16 +105,16 @@ displayCard (Card cardType color value) = do
 
 main :: IO ()
 main = do
-    -- let card = Card Number Red Zero
-    -- let card2 = Card Number Yellow Seven
-    -- let card3 = Card Number Green Nine
-    -- let card4 = Card Reverse Blue NoValue
-    -- let card5 = Card Block Red NoValue
-    -- displayCard card
-    -- displayCard card2
-    -- displayCard card3
-    -- displayCard card4
-    -- displayCard card5
+    let card = Card Number Red Zero
+    let card2 = Card Number Yellow Seven
+    let card3 = Card Number Green Nine
+    let card4 = Card Reverse Blue NoValue
+    let card5 = Card Block Red NoValue
+    displayCard card
+    displayCard card2
+    displayCard card3
+    displayCard card4
+    displayCard card5
 
-    -- msgWin "Fulano"
+    msgWin "Fulano"
 

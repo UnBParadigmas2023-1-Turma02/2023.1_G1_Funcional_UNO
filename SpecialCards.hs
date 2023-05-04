@@ -2,16 +2,14 @@ module SpecialCards where
 
 import Types
 
-modAcceptingNegative x n 
-        | x < 0 = n - mod (-x) n
-        | otherwise = mod x n
-
 -- Comprar carta do Monte
 buyCardFromDeck :: Deck -> Player -> (Deck, Player)
 buyCardFromDeck (c:cs) (name, hand) = (cs, (name, hand ++ [c]))
 
 getCardType :: Card -> TypeCard
-getCardType (Card cardType _ _) = cardType
+getCardType (Card Reverse _ _) = Reverse
+getCardType (Card Block _ _) = Block
+getCardType (Card Buy _ _) = Buy
 
 chooseNewColor :: Color
 chooseNewColor = Red
@@ -20,7 +18,8 @@ dealReverseCard :: GameState -> GameState
 dealReverseCard g@(deck, players, topCard, idxPlayer, direction) = (deck, players, topCard, idxPlayer, direction*(-1)) 
 
 dealBlockCard :: GameState -> GameState
-dealBlockCard g@(deck, players, topCard, idxPlayer, direction) = (deck, players, topCard, idxPlayer+(1 * direction), direction) 
+dealBlockCard g@(deck, players, topCard, idxPlayer, direction) = (deck, players, topCard, idxPlayer+1, direction) 
+
 
 getValueBuyCard :: Card -> Int
 getValueBuyCard (Card _ _ Two) = 2
@@ -57,11 +56,11 @@ dealBuyCard g@(deck, players, topCard, idxPlayer, direction) =
             let (Card typeCard _ value) = topCard
             let corEscolhida = chooseNewColor
             let newTopCard = Card typeCard corEscolhida value
-            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy 
-            (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+(1 * direction), direction)
+            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! idxPlayer) numberOfBuy 
+            (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+1, direction)
           else
-            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy
-            in (newDeck, updatePlayerList idxPlayer playerAfterBuying players, topCard, idxPlayer+(1 * direction), direction)
+            let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! idxPlayer) numberOfBuy
+            in (newDeck, updatePlayerList idxPlayer playerAfterBuying players, topCard, idxPlayer+1, direction)
 
  
 dealSpecialCards :: GameState -> GameState
@@ -69,5 +68,4 @@ dealSpecialCards g@(deck, players, topCard, idxPlayer, direction)
             | topCardType == Reverse = dealReverseCard g
             | topCardType == Block = dealBlockCard g
             | topCardType == Buy = dealBuyCard g
-            | otherwise = g
         where topCardType = getCardType topCard
