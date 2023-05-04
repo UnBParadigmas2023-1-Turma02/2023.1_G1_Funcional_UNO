@@ -9,8 +9,8 @@ import System.IO
 import System.Random
 import System.Random.Shuffle
 
-test :: IO ()
-test = do
+main :: IO ()
+main = do
   -- Imprimir Deck
   --mapM_ (putStrLn . cardToString) deck 
 

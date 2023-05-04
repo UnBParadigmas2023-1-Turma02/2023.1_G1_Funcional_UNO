@@ -33,7 +33,7 @@ buyCardFromDeckNTimes deck player n
             | otherwise = let (newDeck, newPlayer) = buyCardFromDeck deck player 
                             in buyCardFromDeckNTimes newDeck newPlayer (n-1)
 
-newColor :: Color
+newColor :: IO Color
 newColor = do
     putStrLn "Qual cor você deseja escolher? 1 - Vermelho, 2 - Azul, 3 - Amarelo, 4 - Verde"
     color <- readLn
@@ -65,5 +65,5 @@ dealSpecialCards :: GameState -> GameState
 dealSpecialCards g@(deck, players, topCard, idxPlayer, direction)
             | topCardType == Reverse = dealReverseCard g
             | topCardType == Block = dealBlockCard g
-            | topCardType == Buy = dealBuyCard g
+            -- | topCardType == Buy = dealBuyCard g
         where topCardType = getCardType topCard
