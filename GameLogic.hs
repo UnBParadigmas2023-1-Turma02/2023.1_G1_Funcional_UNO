@@ -5,6 +5,10 @@ import SpecialCards
 
 import Types
 
+modAcceptingNegative x n 
+        | x < 0 = n - mod (-x) n
+        | otherwise = mod x n
+
 -- Imprime Card
 cardToString :: Card -> String
 cardToString (Card typeCard color value) = show typeCard ++ " " ++ show color ++ " " ++ show value
@@ -82,12 +86,13 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   -- Retira a cartaJogada da mão do Jogador
   let newPlayer = dropCardAtIndex playerNum playerAfterBuying
 
-  
+  -- Realiza Funções de Cartas Especiais
+  let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, idxPlayer, direction)
 
   -- Verifica se o Jogador está de Uno
   checkUno newPlayer
   
-  return (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, (idxPlayer + 1) `mod` length players, direction)
+  return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
 playGame :: GameState -> IO ()
