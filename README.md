@@ -41,7 +41,7 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os seguintes passos:
 
 * Rode os comandos ```sudo apt install cabal-install``` e ```cabal update```.
-* Assim, instale a biblioteca random por meio de ```cabal install --lib random```.
+* Assim, instale a biblioteca random por meio de ```cabal install --lib random-shuffle```.
 * Entre no Prelude: ```ghci```.
 * Rode o comando: ```:load Game2.hs```.
 * Por último, rode: ```main```.
