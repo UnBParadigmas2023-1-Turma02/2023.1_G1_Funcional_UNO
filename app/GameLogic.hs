@@ -92,8 +92,8 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Verifica se o Jogador está de Uno
   checkUno newPlayer
-  putStrLn newIdxPlayerAfterSpecialCards 
-  putStrLn newDirectionAfterSpecialCards
+  -- putStrLn newIdxPlayerAfterSpecialCards
+  -- putStrLn newDirectionAfterSpecialCards
   return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo

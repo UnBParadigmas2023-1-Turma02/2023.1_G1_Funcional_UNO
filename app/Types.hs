@@ -9,10 +9,10 @@ module Types (
   GameState
 ) where
 
-data TypeCard = Number | Buy | Reverse | Block | Only_Color deriving (Show, Eq)
-data Color = Red | Blue | Green | Yellow | NoColor deriving (Show, Eq)
-data Value = One | Two | Three | Four | Five | Six | Seven | Eight | Nine | NoValue deriving (Show, Eq)
-data Card = Card TypeCard Color Value deriving (Show, Eq)
+data TypeCard = Number | Buy | Reverse | Block | Only_Color deriving (Show, Eq, Ord)
+data Color = Red | Blue | Green | Yellow | NoColor deriving (Show, Eq, Ord)
+data Value = One | Two | Three | Four | Five | Six | Seven | Eight | Nine | NoValue deriving (Show, Eq, Ord)
+data Card = Card TypeCard Color Value deriving (Show, Eq, Ord)
 type Deck = [Card]
 type Hand = [Card]
 type Player = (String, Hand)
