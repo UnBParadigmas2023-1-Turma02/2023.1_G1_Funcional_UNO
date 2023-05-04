@@ -67,5 +67,5 @@ dealSpecialCards :: GameState -> GameState
 dealSpecialCards g@(deck, players, topCard, idxPlayer, direction)
             | topCardType == Reverse = dealReverseCard g
             | topCardType == Block = dealBlockCard g
-            -- | topCardType == Buy = dealBuyCard g
+            | topCardType == Buy = dealBuyCard g
         where topCardType = getCardType topCard
