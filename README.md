@@ -16,8 +16,8 @@
 | 180078224  |  Thaís Rebouças de Araujo - @Thais-ra |
 | 200028367  |  Victor Hugo Oliveira Leão - @victorleaoo |
 
-## Sobre 
-A fim de praticar os conhecimentos do Paradigma Funcional, foi desenvolvido o jogo de cartas [UNO](https://www.letsplayuno.com/) na linguagem Haskell. 
+## Sobre
+A fim de praticar os conhecimentos do Paradigma Funcional, foi desenvolvido o jogo de cartas [UNO](https://www.letsplayuno.com/) na linguagem Haskell.
 
 Para aqueles que não conhecem o jogo, ele funciona, basicamente, da seguinte maneira:
 
@@ -34,24 +34,21 @@ Imagem de exemplo dos tipos de cartas presentes no jogo UNO:
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
-## Instalação 
+## Instalação
 **Linguagens**: Haskell<br>
 **Tecnologias**: GHCi e Cabal (para a biblioteca random).<br>
 
 Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os seguintes passos:
 
-* Rode os comandos ```sudo apt install cabal-install``` e ```cabal update```.
-* Assim, instale a biblioteca random por meio de ```cabal install --lib random-shuffle```.
-* Entre no Prelude: ```ghci```.
-* Rode o comando: ```:load Game2.hs```.
-* Por último, rode: ```main```.
+1. Rode os comandos ```sudo apt install cabal-install``` e ```cabal update```.
+2. Instale as dependências e rode o jogo com  ```cabal run```.
 
-## Uso 
+## Uso
 A partir dos passos acima, o jogo já estará sendo executado, assim, só seguir as instruções na tela para jogar. Se divirta! :)
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
-Procure: 
+Procure:
 (i) Introduzir o projeto;
 (ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
 (iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
@@ -72,10 +69,10 @@ TEMPO: +/- 15min
 | Thaís Rebouças de Araujo - @Thais-ra | - | - |
 | Victor Hugo Oliveira Leão - @victorleaoo | Desenvolvimento da [logicaGeral](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/logicaGeral) em dupla com o membro Leonardo:<br>- Criação do monte de cartas (deck) e seu embaralhamento<br>- Parte da implementação da função playGame e playTurn: funcionamento inicial da lista rotativa de jogadores; comprar carta do monte; manipulação (selecionar e retirar) carta jogada pelo jogador. | Excelente |
 
-## Outros 
+## Outros
 
 (i) Lições Aprendidas:
-* Como desenvolver um projeto com base no Paradigma Funcional. Assim, a manipulação de listas (variáveis imutáveis) e recursividade foram elementos muito explorados, elementos muitas vezes negligenciados quando trabalhando com outros paradigmas e linguagens não similares ao Haskell, por exemplo. 
+* Como desenvolver um projeto com base no Paradigma Funcional. Assim, a manipulação de listas (variáveis imutáveis) e recursividade foram elementos muito explorados, elementos muitas vezes negligenciados quando trabalhando com outros paradigmas e linguagens não similares ao Haskell, por exemplo.
 
 (ii) Percepções:
 * Por estarem condicionados e acostumados com o Paradigma Procedural, muitas vezes, de primeira, era complexo ver uma solução totalmente voltada ao Paradigma Funcional.
