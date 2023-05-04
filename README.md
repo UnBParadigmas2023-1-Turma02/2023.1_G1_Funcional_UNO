@@ -1,51 +1,53 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
-
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2023.1_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
+# UNO
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T02 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 02<br>
+**Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 180099353  |  Cibele Freitas Goudinho - @CibeleG |
+| 190108011  |  Guilherme Brito Vilas Boas - @dev-brito |
+| 170105342  |  Irwin Schmitt - @irwinschmitt |
+| 180103792  |  Júlia Farias Sousa - @julisous |
+| 180104390  |  Lameque Fernandes Azevedo - @LamequeFernandes |
+| 201000379  |  Leonardo Milomes Vitoriano - @leonardomilv3 |
+| 180078224  |  Thaís Rebouças de Araujo - @Thais-ra |
+| 200028367  |  Victor Hugo Oliveira Leão - @victorleaoo |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
-Use referências, links, que permitam conhecer um pouco mais sobre o projeto.
-Capriche nessa seção, pois ela é a primeira a ser lida pelos interessados no projeto.
+A fim de praticar os conhecimentos do Paradigma Funcional, foi desenvolvido o jogo de cartas [UNO](https://www.letsplayuno.com/) na linguagem Haskell. 
+
+Para aqueles que não conhecem o jogo, ele funciona, basicamente, da seguinte maneira:
+
+1. Cada jogador recebe, inicialmente, 7 cartas de um monte de cartas composto por cartas de 0-9 separadas entre as cores azul, vermelho, amarelo e verde, além de cartas especiais (bloqueio, reverter a ordem, comprar 2 ou 4 cartas e mudar a cor da carta do topo).
+2. Uma carta de topo é colocada e, assim, os jogadores tem que jogar, por rodada, uma de suas cartas que são válidas ou de cor ou de número/tipo, atualizando a carta de topo pelas suas jogadas. Caso a carta tenha algum efeito especial, ele também é acionado.
+3. O jogador pode comprar cartas do monte de cartas, caso ele não possua nenhuma válida.
+4. Quando um jogador só possuí uma carta, ele deve sinalizar UNO.
+5. Ganha (e acaba com o jogo) aquele jogador que não tiver posse de nenhuma carta antes de todos os outros.
+
+Imagem de exemplo dos tipos de cartas presentes no jogo UNO:
+
+![image](https://user-images.githubusercontent.com/33530818/236084070-e0f4efdc-a464-4a30-aeba-e958347fa7c8.png)
 
 ## Screenshots
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
-Gifs animados e outras ilustrações são bem-vindos!
+**Linguagens**: Haskell<br>
+**Tecnologias**: GHCi e Cabal (para a biblioteca random).<br>
+
+Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os seguintes passos:
+
+* Rode os comandos ```sudo apt install cabal-install``` e ```cabal update```.
+* Assim, instale a biblioteca random por meio de ```cabal install --lib random```.
+* Entre no Prelude: ```ghci```.
+* Rode o comando: ```:load Game2.hs```.
+* Por último, rode: ```main```.
 
 ## Uso 
-Explique como usar seu projeto.
-Procure ilustrar em passos, com apoio de telas do software, seja com base na interface gráfica, seja com base no terminal.
-Nessa seção, deve-se revelar de forma clara sobre o funcionamento do software.
+A partir dos passos acima, o jogo já estará sendo executado, assim, só seguir as instruções na tela para jogar. Se divirta! :)
 
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
@@ -58,18 +60,34 @@ OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
 TEMPO: +/- 15min
 
 ## Participações
-Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
+
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Cibele Freitas Goudinho - @CibeleG | - | - |
+| Guilherme Brito Vilas Boas - @dev-brito | - | - |
+| Irwin Schmitt - @irwinschmitt | - | - |
+| Júlia Farias Sousa - @julisous | - | - |
+| Lameque Fernandes Azevedo - @LamequeFernandes | - | - |
+| Leonardo Milomes Vitoriano - @leonardomilv3 | - | - |
+| Thaís Rebouças de Araujo - @Thais-ra | - | - |
+| Victor Hugo Oliveira Leão - @victorleaoo | Desenvolvimento da [logicaGeral](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/logicaGeral) em dupla com o membro Leonardo:<br>- Criação do monte de cartas (deck) e seu embaralhamento<br>- Parte da implementação da função playGame e playTurn: funcionamento inicial da lista rotativa de jogadores; comprar carta do monte; manipulação (selecionar e retirar) carta jogada pelo jogador. | Excelente |
 
 ## Outros 
-Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
-(i) Lições Aprendidas;
-(ii) Percepções;
-(iii) Contribuições e Fragilidades, e
-(iV) Trabalhos Futuros.
+
+(i) Lições Aprendidas:
+* Como desenvolver um projeto com base no Paradigma Funcional. Assim, a manipulação de listas (variáveis imutáveis) e recursividade foram elementos muito explorados, elementos muitas vezes negligenciados quando trabalhando com outros paradigmas e linguagens não similares ao Haskell, por exemplo. 
+
+(ii) Percepções:
+* Por estarem condicionados e acostumados com o Paradigma Procedural, muitas vezes, de primeira, era complexo ver uma solução totalmente voltada ao Paradigma Funcional.
+
+(iii) Contribuições e Fragilidades:
+* Verificar e validar entradas do usuário.
+* Funcionalidades de diferentes modos de jogadas, como, por exemplo, jogar sequências.
+
+(iV) Trabalhos Futuros:
+* Modo de jogo por LAN (jogadores na mesma rede, mas em computadores diferentes).
 
 ## Fontes
-Referencie, adequadamente, as referências utilizadas.
-Indique ainda sobre fontes de leitura complementares.
+> - Biblioteca Random (Shuffle): https://hackage.haskell.org/package/random-shuffle-0.0.4/docs/System-Random-Shuffle.html
+> - GHCi: https://downloads.haskell.org/ghc/latest/docs/users_guide/ghci.html
+> - Cabal: https://cabal.readthedocs.io/en/stable/
