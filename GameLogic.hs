@@ -2,6 +2,7 @@ module GameLogic where
 
 import Deck
 import SpecialCards
+import ValidGame
 
 import Types
 
@@ -76,7 +77,13 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   putStrLn (cardToString cartaJogada)
 
   -- VALIDA cartaJogada
-
+   teste :: Color 
+     let color = Yellow
+     in if ValidGame GameState playerNum (Yellow)
+            then do 
+            let newTopCard = CArd typeCard
+            playerNum value
+   
   -- PULAR A JOGADA (se comprou carta e não deu pra jogar)
 
   -- Retira a cartaJogada da mão do Jogador
