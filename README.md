@@ -36,7 +36,7 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 
 ## Instalação
 **Linguagens**: Haskell<br>
-**Tecnologias**: GHCi e Cabal (para a biblioteca random).<br>
+**Tecnologias**: GHCi (versão 9.2.7) e Cabal (3.6.2.0).<br>
 
 Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os seguintes passos:
 
