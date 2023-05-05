@@ -3,7 +3,7 @@ module GameLogic where
 import Deck
 import SpecialCards
 import Types
--- import UI.PlayCard
+import UI.PlayCard
 import ValidGame
 import UI
 
@@ -52,7 +52,7 @@ checkWinner players =
     [(winnerName, _)] -> winnerName
     _        -> ""
 
-selectValidCard :: Player -> Card -> IO (Card, Int) 
+selectValidCard :: Player -> Card -> IO (Card, Int)
 selectValidCard player topCard = do
   let hand = getPlayerHand player
   let validCards = filter (validCard topCard) hand
@@ -67,7 +67,7 @@ selectValidCard player topCard = do
       let cartaJogada = (hand !! playerNum)
       let cardIsValid = validCard topCard cartaJogada
       if cardIsValid
-        then do 
+        then do
           putStrLn (cardToString cartaJogada)
           let newTopCard = cartaJogada
           return (newTopCard, playerNum)
@@ -89,16 +89,15 @@ playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Imprime carta topo
-  putStrLn (cardToString topCard)
+  putStrLn ("Top Card: " ++ cardToString topCard)
 
   -- Imprime o Jogador + Mão
   putStrLn (playerToString player)
 
-  -- retorna a carda selecionada ou nothing se comprou uma
-  -- card <- renderPlayCard gameState
-  -- case card of
-  --   Just card -> putStrLn (cardToString card)
-  --   Nothing -> putStrLn "You didn't choose a card!"
+  cardToPlay <- renderPlayCard gameState
+  case cardToPlay of
+    Just cardToPlay -> putStrLn ("Você escolheu a carta " ++ cardToString cardToPlay)
+    Nothing -> putStrLn "Você escolheu comprar"
 
   -- Compra carta do monte
   putStrLn "Quer comprar uma carta do monte? (s/n)"
@@ -111,7 +110,7 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   -- VALIDA cartaJogada
   (newTopCard, playerNum) <- selectValidCard playerAfterBuying topCard
 
-  if playerNum == -1 
+  if playerNum == -1
     then do
       return (newDeck, players, topCard, (idxPlayer + (1 * direction)) `modAcceptingNegative` length players, direction)
     else do
@@ -122,8 +121,8 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
       let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, newTopCard, idxPlayer, direction)
 
       -- Verifica se o Jogador está de Uno
-      checkUno newPlayer 
-      
+      checkUno newPlayer
+
       return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
