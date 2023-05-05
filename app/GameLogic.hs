@@ -81,7 +81,7 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   putStrLn (cardToString cartaJogada)
 
   -- VALIDA cartaJogada
-    if ValidGame topCard cartaJogada 
+    if validCard topCard cartaJogada 
           then do 
           let newTopCard = Card cartaJogada
           cartaJogada value
