@@ -91,10 +91,10 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   putStrLn (playerToString player)
 
   -- retorna a carda selecionada ou nothing se comprou uma
-  card <- renderPlayCard gameState
-  case card of
-    Just card -> putStrLn (cardToString card)
-    Nothing -> putStrLn "You didn't choose a card!"
+  -- card <- renderPlayCard gameState
+  -- case card of
+  --   Just card -> putStrLn (cardToString card)
+  --   Nothing -> putStrLn "You didn't choose a card!"
 
   -- Compra carta do monte
   putStrLn "Quer comprar uma carta do monte? (s/n)"
@@ -107,16 +107,20 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   -- VALIDA cartaJogada
   (newTopCard, playerNum) <- selectValidCard playerAfterBuying topCard
 
-  -- Retira a cartaJogada da mão do Jogador
-  let newPlayer = dropCardAtIndex playerNum playerAfterBuying
+  if playerNum == -1 
+    then do
+      return (newDeck, players, topCard, (idxPlayer + (1 * direction)) `modAcceptingNegative` length players, direction)
+    else do
+      -- Retira a cartaJogada da mão do Jogador
+      let newPlayer = dropCardAtIndex playerNum playerAfterBuying
 
-  -- Realiza Funções de Cartas Especiais
-  let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, newTopCard, idxPlayer, direction)
+      -- Realiza Funções de Cartas Especiais
+      let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, newTopCard, idxPlayer, direction)
 
-  -- Verifica se o Jogador está de Uno
-  checkUno newPlayer 
-
-  return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
+      -- Verifica se o Jogador está de Uno
+      checkUno newPlayer 
+      
+      return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
 playGame :: GameState -> IO ()
