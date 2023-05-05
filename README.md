@@ -66,7 +66,7 @@ TEMPO: +/- 15min
 | -- | -- | -- |
 | Cibele Freitas Goudinho - @CibeleG | - | - |
 | Guilherme Brito Vilas Boas - @dev-brito | Desenvolvimento de Lógica para [Cartas Especiais](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/blob/main/app/SpecialCards.hs), Integração da lógica de Cartas Especiais para a Lógica Geral do Jogo | Excelente |
-| Irwin Schmitt - @irwinschmitt | - | - |
+| Irwin Schmitt - @irwinschmitt | Configuracão do repositório com o `cabal`; Desenvolvimento da interface de seleção de cartas ([app/UI/](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/main/app/UI)). | - |
 | Júlia Farias Sousa - @julisous | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Cibele| Boa |
 | Lameque Fernandes Azevedo - @LamequeFernandes | - | - |
 | Leonardo Milomes Vitoriano - @leonardomilv3 | Desenvolvimento da [logicaGeral](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/logicaGeral) em dupla com o membro Victor:<br>- Leitura dos jogadores e distribuição da mão deles<br>- Parte da implementação da função playGame e playTurn: verificar se o jogador está de UNO; encerrar o jogo; validar mão do jogador e carta jogada no topo  | Excelente |
