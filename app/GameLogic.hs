@@ -5,6 +5,7 @@ import SpecialCards
 import Types
 -- import UI.PlayCard
 import ValidGame
+import UI
 
 
 -- Imprime Card
@@ -80,6 +81,9 @@ selectValidCard player topCard = do
 getPlayerHand :: Player -> [Card]
 getPlayerHand (_, hand) = hand
 
+getNamePlayer :: Player -> String
+getNamePlayer (nome, _) = nome
+
 -- Jogar uma rodada
 playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
@@ -125,11 +129,13 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 -- Jogar o jogo
 playGame :: GameState -> IO ()
 playGame (_, players, _, _, _) -- Condição de Parada caso exista um Vencedor
-  | (length nameWinner > 1) = putStrLn (nameWinner ++ " is the Winner!")
+  | (length nameWinner > 1) = msgWin nameWinner
   where nameWinner = checkWinner players
 playGame (deck, players, topCard, idxPlayer, direction) = do
   -- Seleciona o jogador que vai jogar no momento
   let curPlayer = players !! idxPlayer
+  vezDoJogadorX $ getNamePlayer curPlayer
+  inputDigit <- getLine
 
   -- Faz a nova jogada e salva no novo GameState
   newGameState <- playTurn (deck, players, topCard, idxPlayer, direction) curPlayer
