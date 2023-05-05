@@ -58,10 +58,10 @@ dealBuyCard g@(deck, players, topCard, idxPlayer, direction) =
             let corEscolhida = chooseNewColor
             let newTopCard = Card typeCard corEscolhida value
             let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy 
-            (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+(1 * direction), direction)
+            (newDeck, updatePlayerList (idxPlayer + (1 * direction) `modAcceptingNegative` length players) playerAfterBuying players, newTopCard, (idxPlayer + (1 * direction) `modAcceptingNegative` length players), direction)
           else
             let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy
-            in (newDeck, updatePlayerList idxPlayer playerAfterBuying players, topCard, idxPlayer+(1 * direction), direction)
+            in (newDeck, updatePlayerList (idxPlayer + (1 * direction) `modAcceptingNegative` length players) playerAfterBuying players, topCard, (idxPlayer + (1 * direction) `modAcceptingNegative` length players), direction)
 
  
 dealSpecialCards :: GameState -> GameState
