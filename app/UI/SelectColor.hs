@@ -46,7 +46,7 @@ selectCardColorAppEvent (VtyEvent ev) =
 selectCardColorAppEvent _ = return ()
 
 selectCardColorInitialState :: D.Dialog Color Name
-selectCardColorInitialState = D.dialog (Just $ str "Seleciona a cor da carta") (Just (RedButton, choices)) 50
+selectCardColorInitialState = D.dialog (Just $ str " Selecione a cor da carta... ") (Just (RedButton, choices)) 50
   where
     choices =
       [ ("Vermelho", RedButton, Red),

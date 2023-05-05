@@ -18,6 +18,7 @@ import qualified Brick.Widgets.Center as C
 import Brick.Widgets.Core
   ( padAll,
     str,
+    withAttr,
   )
 import qualified Brick.Widgets.Dialog as D
 import qualified Graphics.Vty as V
@@ -25,10 +26,32 @@ import Types
 import UI.SelectColor
 import UI.Utils
 
+redAttr :: A.AttrName
+redAttr = A.attrName "red"
+
+blueAttr :: A.AttrName
+blueAttr = A.attrName "blue"
+
+greenAttr :: A.AttrName
+greenAttr = A.attrName "green"
+
+yellowAttr :: A.AttrName
+yellowAttr = A.attrName "yellow"
+
+whiteAttr :: A.AttrName
+whiteAttr = A.attrName "white"
+
+cardAttr :: Card -> A.AttrName
+cardAttr (Card _ color _) = case color of
+  Red -> redAttr
+  Blue -> blueAttr
+  Green -> greenAttr
+  Yellow -> yellowAttr
+
 drawUi :: Card -> D.Dialog Card Card -> [Widget Card]
 drawUi card d = [ui]
   where
-    ui = D.renderDialog d $ C.hCenter $ padAll 1 $ str $ cardToString card
+    ui = D.renderDialog d $ C.hCenter $ padAll 1 $ withAttr (cardAttr card) $ str $ cardToString card
 
 appEvent :: BrickEvent Card e -> T.EventM Card (D.Dialog Card Card) ()
 appEvent (VtyEvent ev) =
@@ -47,7 +70,12 @@ theMap :: A.AttrMap
 theMap =
   A.attrMap
     V.defAttr
-    [ (D.buttonSelectedAttr, V.black `on` V.white)
+    [ (D.buttonSelectedAttr, V.black `on` V.white),
+      (redAttr, bg V.red),
+      (blueAttr, bg V.blue),
+      (greenAttr, bg V.green),
+      (yellowAttr, bg V.yellow),
+      (whiteAttr, bg V.white)
     ]
 
 theApp :: Card -> M.App (D.Dialog Card Card) e Card
