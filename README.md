@@ -33,10 +33,10 @@ Imagem de exemplo dos tipos de cartas presentes no jogo UNO:
 
 ## Screenshots
 
-![Home](./assets/uno_home.png){ width=100% }
-![Home](./assets/num_jogadores.png){ width=100% }
-![Home](./assets/vez_jogador.png){ width=100% }
-![Home](./assets/wins.png){ width=100% }
+![Home](./assets/uno_home.png)
+![Home](./assets/num_jogadores.png)
+![Home](./assets/vez_jogador.png)
+![Home](./assets/wins.png)
 
 ## Instalação
 **Linguagens**: Haskell<br>
