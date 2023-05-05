@@ -4,7 +4,7 @@ import Types
 
 -- Cria as cartas de Number com todas as cores possíveis 2x
 listNumberColor :: [Card]
-listNumberColor = concatMap (\color -> concatMap (\value -> replicate 2 $ Card Number color value) [Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Nine]) [Red, Blue, Green, Yellow]
+listNumberColor = concatMap (\color -> concatMap (\value -> replicate 2 $ Card Number color value) [One, Two, Three, Four, Five, Six, Seven, Eight, Nine]) [Red, Blue, Green, Yellow]
 
 -- Cria as cartas de Reverse e Block com todas as cores possíveis 2x
 listSpecialsColor :: [Card]

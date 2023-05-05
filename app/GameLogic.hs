@@ -2,20 +2,21 @@ module GameLogic where
 
 import Deck
 import SpecialCards
+import Types
+import UI.PlayCard
 import ValidGame
 
-import Types
 
 -- Imprime Card
 cardToString :: Card -> String
 cardToString (Card typeCard color value) = show typeCard ++ " " ++ show color ++ " " ++ show value
   -- Print Deck
-  --mapM_ (putStrLn . cardToString) deckShuffled 
+  --mapM_ (putStrLn . cardToString) deckShuffled
 
 -- Distribui 7 cartas cada jogador
 dealCards :: Deck -> [Player] -> ([Player], Deck)
 dealCards d [] = ([], d)
-dealCards d ((name, hand):players) = 
+dealCards d ((name, hand):players) =
     let (newHand, newDeck) = splitAt 7 d
         newPlayer = (name, hand ++ newHand)
         (updatedPlayers, finalDeck) = dealCards newDeck players
@@ -56,15 +57,18 @@ playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Imprime o Jogador + Mão
-  putStrLn (playerToString player) 
+  putStrLn (playerToString player)
+
+  -- Não faz nada ainda
+  renderPlayCard gameState
 
   -- Compra carta do monte
   putStrLn "Quer comprar uma carta do monte? (s/n)"
   choice <- getLine
-  let (newDeck, playerAfterBuying) = if choice == "s" then buyCardFromDeck deck player else (deck, player)  
+  let (newDeck, playerAfterBuying) = if choice == "s" then buyCardFromDeck deck player else (deck, player)
 
   -- Imprime o Jogador + Mão
-  putStrLn (playerToString playerAfterBuying) 
+  putStrLn (playerToString playerAfterBuying)
 
   -- Pergunta o INDEX da carta que o jogador deseja jogar (MELHORAR ESSA FUNÇÃO)
   putStrLn "Qual carta deseja jogar? "
@@ -77,24 +81,26 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   putStrLn (cardToString cartaJogada)
 
   -- VALIDA cartaJogada
-   teste :: Color 
+    cor :: Color 
      let color = Yellow
      in if ValidGame GameState playerNum (Yellow)
             then do 
-            let newTopCard = CArd typeCard
+            let newTopCard = Card typeCard
             playerNum value
-   
+            
   -- PULAR A JOGADA (se comprou carta e não deu pra jogar)
 
   -- Retira a cartaJogada da mão do Jogador
   let newPlayer = dropCardAtIndex playerNum playerAfterBuying
 
-  
+  -- Realiza Funções de Cartas Especiais
+  let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, idxPlayer, direction)
 
   -- Verifica se o Jogador está de Uno
   checkUno newPlayer
-  
-  return (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, (idxPlayer + 1) `mod` length players, direction)
+  -- putStrLn newIdxPlayerAfterSpecialCards
+  -- putStrLn newDirectionAfterSpecialCards
+  return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
 playGame :: GameState -> IO ()

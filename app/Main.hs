@@ -1,3 +1,5 @@
+module Main where
+
 import Types
 
 import Deck
@@ -12,12 +14,12 @@ import System.Random.Shuffle
 
 readPlayers :: IO [Player]
 readPlayers = do
-  putStr "Enter number of players: "
+  putStrLn "Enter number of players: "
   numPlayersStr <- getLine
   let numPlayers = read numPlayersStr :: Int
   players <- mapM (\n -> do
                     let i = 1
-                    putStr ("Enter name for player: ")
+                    putStrLn ("Enter name for player: ")
                     playerName <- getLine
                     return (playerName, [])) [1..numPlayers]
   return players
@@ -25,7 +27,7 @@ readPlayers = do
 main :: IO ()
 main = do
   -- Imprimir Deck
-  --mapM_ (putStrLn . cardToString) deck 
+  --mapM_ (putStrLn . cardToString) deck
 
   -- Deck embaralhado -> https://hackage.haskell.org/package/random-shuffle-0.0.4/docs/System-Random-Shuffle.html
   deckShuffled <- shuffleM deck
