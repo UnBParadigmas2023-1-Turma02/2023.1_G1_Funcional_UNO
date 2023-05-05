@@ -100,12 +100,12 @@ msgWin nomeJogador = do
 
 contentCard :: Int -> [String] -> String
 contentCard i array
-    | i == 10 = "| "++(array !! 10)++" |" 
-    | i == 11 = "| "++(array !! 11)++" |" 
-    | i == 12 = "| "++(array !! 12)++" |"
+    | i == 10 = "|  "++(array !! 10)++"  |"
+    | i == 11 = "|  "++(array !! 11)++"  |" 
+    | i == 12 = "|  "++(array !! 12)++"  |"
     | i == 13 = "|  "++(array !! 13)++"  |"
     | i == 14 = "| "++(array !! 14)++" |"
-    | otherwise = "| "++(array !! i)++"  |"
+    | otherwise = "|  "++(array !! i)++"   |"
 
 
 displayCard :: Card -> IO()
@@ -117,8 +117,8 @@ displayCard (Card cardType color value) = do
     putStrLn "·——-———·"
     where 
         index = getIndexCard (Card cardType color value)
-        arrayColor = arrayColorCard color
-        content = contentCard index arrayColor
+        -- arrayColor = arrayColorCard color
+        content = contentCard index allCards
 
 
 -- main :: IO ()
