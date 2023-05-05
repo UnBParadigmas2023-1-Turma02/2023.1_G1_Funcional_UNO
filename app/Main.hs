@@ -18,10 +18,9 @@ readPlayers = do
   numPlayersStr <- getLine
   let numPlayers = read numPlayersStr :: Int
   players <- mapM (\n -> do
-                    let i = 1
-                    putStrLn ("Enter name for player: ")
-                    playerName <- getLine
-                    return (playerName, [])) [1..numPlayers]
+                  putStrLn ("Enter name for player: ")
+                  playerName <- getLine
+                  return (playerName, [])) [1..numPlayers]
   return players
 
 main :: IO ()

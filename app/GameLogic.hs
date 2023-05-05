@@ -3,7 +3,7 @@ module GameLogic where
 import Deck
 import SpecialCards
 import Types
-import UI.PlayCard
+-- import UI.PlayCard
 import ValidGame
 
 
@@ -51,16 +51,47 @@ checkWinner players =
     [(winnerName, _)] -> winnerName
     _        -> ""
 
+selectValidCard :: Player -> Card -> IO (Card, Int) 
+selectValidCard player topCard = do
+  let hand = getPlayerHand player
+  let validCards = filter (validCard topCard) hand
+  if null validCards
+    then do
+      putStrLn ("Você não tem cartas válidas. Seu turno foi pulado. Compre uma carta na próxima rodada.")
+      return ((Card Buy Red One), -1)  -- ACABAR A JOGADA DELE!!!!
+    else do
+      putStrLn ("Qual carta deseja jogar? ")
+      playerNumStr <- getLine
+      let playerNum = read playerNumStr :: Int
+      let cartaJogada = (hand !! playerNum)
+      let cardIsValid = validCard topCard cartaJogada
+      if cardIsValid
+        then do 
+          putStrLn (cardToString cartaJogada)
+          let newTopCard = cartaJogada
+          return (newTopCard, playerNum)
+        else do
+          putStrLn ("Carta Invalida!")
+          selectValidCard player topCard
+  where
+    allCardsInvalid = all (not . validCard topCard) (getPlayerHand player)
+
+
+getPlayerHand :: Player -> [Card]
+getPlayerHand (_, hand) = hand
 
 -- Jogar uma rodada
 playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
+  -- Imprime carta topo
+  putStrLn (cardToString topCard)
+
   -- Imprime o Jogador + Mão
   putStrLn (playerToString player)
 
   -- Não faz nada ainda
-  renderPlayCard gameState
+  -- renderPlayCard gameState
 
   -- Compra carta do monte
   putStrLn "Quer comprar uma carta do monte? (s/n)"
@@ -70,34 +101,18 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   -- Imprime o Jogador + Mão
   putStrLn (playerToString playerAfterBuying)
 
-  -- Pergunta o INDEX da carta que o jogador deseja jogar (MELHORAR ESSA FUNÇÃO)
-  putStrLn "Qual carta deseja jogar? "
-  playerNumStr <- getLine
-  let playerNum = read playerNumStr :: Int
-
-  -- Imprime a carta que o jogador selecionou (NOVA TOPO CARD, CASO VÁLIDA)
-  let (_, hand) = player
-  let cartaJogada = (hand !! playerNum)
-  putStrLn (cardToString cartaJogada)
-
   -- VALIDA cartaJogada
-    if validCard topCard cartaJogada 
-          then do 
-          let newTopCard = Card cartaJogada
-          cartaJogada value
-
-  -- PULAR A JOGADA (se comprou carta e não deu pra jogar)
+  (newTopCard, playerNum) <- selectValidCard playerAfterBuying topCard
 
   -- Retira a cartaJogada da mão do Jogador
   let newPlayer = dropCardAtIndex playerNum playerAfterBuying
 
   -- Realiza Funções de Cartas Especiais
-  let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, cartaJogada, idxPlayer, direction)
+  let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, newTopCard, idxPlayer, direction)
 
   -- Verifica se o Jogador está de Uno
-  checkUno newPlayer
-  -- putStrLn newIdxPlayerAfterSpecialCards
-  -- putStrLn newDirectionAfterSpecialCards
+  checkUno newPlayer 
+
   return (deckAfterSpecialCards, playersAfterSpecialCards, topCard, (newIdxPlayerAfterSpecialCards + (1 * newDirectionAfterSpecialCards)) `modAcceptingNegative` length players, newDirectionAfterSpecialCards)
 
 -- Jogar o jogo
