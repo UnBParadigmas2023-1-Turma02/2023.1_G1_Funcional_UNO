@@ -67,7 +67,7 @@ TEMPO: +/- 15min
 
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Cibele Freitas Goudinho - @CibeleG | - | - |
+| Cibele Freitas Goudinho - @CibeleG | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Julia. Desenvolvimento da função selectValidCard na logica geral em pareamento com Leonardo e Victor. | Excelente |
 | Guilherme Brito Vilas Boas - @dev-brito | Desenvolvimento de Lógica para [Cartas Especiais](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/blob/main/app/SpecialCards.hs), Integração da lógica de Cartas Especiais para a Lógica Geral do Jogo | Excelente |
 | Irwin Schmitt - @irwinschmitt | Configuracão do repositório com o `cabal`; Desenvolvimento da interface de seleção de cartas ([app/UI/](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/main/app/UI)). | - |
 | Júlia Farias Sousa - @julisous | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Cibele| Boa |
