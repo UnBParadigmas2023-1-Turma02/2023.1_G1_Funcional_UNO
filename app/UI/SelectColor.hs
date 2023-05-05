@@ -32,7 +32,7 @@ data Name
   deriving (Show, Eq, Ord)
 
 -- the body is show card
-selectCardColorUI :: Card ->D.Dialog Color Name -> [Widget Name]
+selectCardColorUI :: Card -> D.Dialog Color Name -> [Widget Name]
 selectCardColorUI card d = [ui]
   where
     ui = D.renderDialog d $ C.hCenter $ padAll 1 $ str (cardToString card)
@@ -52,16 +52,14 @@ selectCardColorInitialState = D.dialog (Just $ str "Seleciona a cor da carta") (
       [ ("Vermelho", RedButton, Red),
         ("Azul", BlueButton, Blue),
         ("Verde", GreenButton, Green),
-          ("Amarelo", YellowButton, Yellow)
+        ("Amarelo", YellowButton, Yellow)
       ]
 
 selectCardColorMap :: A.AttrMap
 selectCardColorMap =
   A.attrMap
     V.defAttr
-    [ (D.dialogAttr, V.white `on` V.blue),
-      (D.buttonAttr, V.black `on` V.white),
-      (D.buttonSelectedAttr, bg V.yellow)
+    [ (D.buttonSelectedAttr, V.black `on` V.white)
     ]
 
 selectCardColorApp :: Card -> M.App (D.Dialog Color Name) e Name
