@@ -89,7 +89,7 @@ playTurn :: GameState -> Player -> IO GameState
 playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
 
   -- Imprime carta topo
-  putStrLn (cardToString topCard)
+  putStrLn ("Top Card: " ++ cardToString topCard)
 
   -- Imprime o Jogador + Mão
   putStrLn (playerToString player)
