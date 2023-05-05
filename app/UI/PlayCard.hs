@@ -21,6 +21,7 @@ import Brick.Widgets.Core
   )
 import qualified Brick.Widgets.Dialog as D
 import qualified Graphics.Vty as V
+import UI.SelectColor
 
 import Types
 import UI.Utils
@@ -72,6 +73,10 @@ getSelectedCard d =
     Just (card1, _) -> Just card1
     Nothing -> Nothing
 
+setCardColor :: Card -> Color -> Card
+setCardColor (Card typeCard _ value) color = Card typeCard color value
+
+
 renderPlayCard :: GameState -> IO (Maybe Card)
 renderPlayCard gameState = do
   let (_, players, topCard, turn, _) = gameState
@@ -79,4 +84,8 @@ renderPlayCard gameState = do
 
   d <- M.defaultMain (theApp topCard) (initialState currentPlayer)
   let selectedCard = getSelectedCard d
-  return selectedCard
+  case selectedCard of
+    Just card | shouldChoseCardColor card -> do
+      color <- getCardColor card
+      return (Just (setCardColor card color))
+    _ -> return selectedCard
