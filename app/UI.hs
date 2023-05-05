@@ -1,14 +1,14 @@
--- module Msg 
--- (msgWelcome
--- ,msgNumPlayers
--- ,displayCard
--- ) where
-
-module Main where
+module UI 
+(msgWelcome
+,msgNumPlayers
+,displayCard
+,namePlayer
+,vezDoJogadorX
+,msgWin
+) where
 
 import AuxCards
 import Types
-
 
 msgWelcome :: IO()
 msgWelcome = do
@@ -33,7 +33,6 @@ msgWelcome = do
     putStrLn "|_________________________________________________________________________________________________|" 
     putStrLn "|                                                                                                 |"
     putStrLn "|                                          |1| START                                              |" 
-    putStrLn "|                                          |2| TUTORIAL                                           |" 
     putStrLn "|                                          |0| SAIR DO JOGO                                       |" 
     putStrLn "|_________________________________________________________________________________________________|"
 
@@ -59,7 +58,7 @@ namePlayer numberPlayer = do
     putStrLn ""
     putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
-    putStrLn ("|                                  DIGITE O NOME DO JOGADOR "++ numberPlayer ++":                                    |")
+    putStrLn ("|                                  DIGITE O NOME DO JOGADOR "++ numberPlayer ++"                                     |")
     putStrLn "|_________________________________________________________________________________________________|" 
 
 
@@ -77,7 +76,6 @@ vezDoJogadorX nomeJogador = do
     putStrLn "|_________________________________________________________________________________________________|" 
     putStrLn "|                                                                                                 |"
     putStrLn "|                                        |1| VER CARTAS                                           |" 
-    putStrLn "|                                        |2| PASSAR VEZ                                           |" 
     putStrLn "|_________________________________________________________________________________________________|"
 
 
@@ -123,8 +121,8 @@ displayCard (Card cardType color value) = do
         content = contentCard index arrayColor
 
 
-main :: IO ()
-main = do
+-- main :: IO ()
+-- main = do
     -- let card = Card Number Red Zero
     -- let card2 = Card Number Yellow Seven
     -- let card3 = Card Number Green Four
