@@ -73,6 +73,8 @@ selectValidCard player topCard = do
           return (newTopCard, playerNum)
         else do
           putStrLn ("Carta Invalida!")
+          putStrLn ("Top Card: " ++ cardToString topCard)
+
           selectValidCard player topCard
 
 getPlayerHand :: Player -> [Card]

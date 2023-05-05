@@ -12,6 +12,8 @@ import Types
 
 msgWelcome :: IO()
 msgWelcome = do
+    putStr "\ESC[2J"
+
     putStrLn "" 
     putStrLn " _________________________________________________________________________________________________ "
     putStrLn "|_________________________________________________________________________________________________|"
@@ -39,6 +41,8 @@ msgWelcome = do
 
 msgNumPlayers :: IO()
 msgNumPlayers = do
+    putStr "\ESC[2J"
+
     putStrLn ""
     putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
@@ -55,6 +59,7 @@ msgNumPlayers = do
 
 namePlayer :: String -> IO()
 namePlayer numberPlayer = do
+    putStr "\ESC[2J"
     putStrLn ""
     putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
@@ -68,7 +73,7 @@ vezDoJogadorX nomeJogador = do
     let tamCaracteresFixed = 50 + length nomeJogador
     let tamNecessarySpaces = tamRowTotal - tamCaracteresFixed
     let spaces = concat (replicate tamNecessarySpaces  " ")
-
+    putStr "\ESC[2J"
     putStrLn ""
     putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
@@ -87,7 +92,7 @@ msgWin nomeJogador = do
     let spaces = concat (replicate tamNecessarySpaces  " ")
 
     putStrLn ""
-
+    putStr "\ESC[2J"
     putStrLn " _________________________________________________________________________________________________"
     putStrLn "|                                                                                                 |"
     putStrLn ("|                                  PARABÉNS "++ nomeJogador ++ " você ganhou! 🎉🎉🎉" ++ spaces ++ "|")
