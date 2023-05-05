@@ -105,12 +105,12 @@ msgWin nomeJogador = do
 
 contentCard :: Int -> [String] -> String
 contentCard i array
-    | i == 10 = "|  "++(array !! 10)++"  |"
-    | i == 11 = "|  "++(array !! 11)++"  |" 
-    | i == 12 = "|  "++(array !! 12)++"  |"
-    | i == 13 = "|  "++(array !! 13)++"  |"
-    | i == 14 = "| "++(array !! 14)++" |"
-    | otherwise = "|  "++(array !! i)++"   |"
+    | i == 10 = "| "++(array !! 10)++"  |"
+    | i == 11 = "| "++(array !! 11)++"  |" 
+    | i == 12 = "| "++(array !! 12)++" |"
+    | i == 13 = "| "++(array !! 13)++" |"
+    | i == 14 = "|"++(array !! 14)++" |"
+    | otherwise = "|  "++(array !! i)++"  |"
 
 
 displayCard :: Card -> IO()
