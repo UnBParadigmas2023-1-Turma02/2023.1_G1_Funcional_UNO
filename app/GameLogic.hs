@@ -116,7 +116,7 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
       return (newDeck, players, topCard, (idxPlayer + (1 * direction)) `modAcceptingNegative` length players, direction)
     else do
       -- Retira a cartaJogada da mão do Jogador
-      let newPlayer = dropCardAtIndex playerNum playerAfterBuying
+      let newPlayer = dropCardAtIndex (playerNum+1) playerAfterBuying
 
       -- Realiza Funções de Cartas Especiais
       let (deckAfterSpecialCards, playersAfterSpecialCards, topCard, newIdxPlayerAfterSpecialCards, newDirectionAfterSpecialCards) = dealSpecialCards (newDeck, updatePlayerList idxPlayer newPlayer players, newTopCard, idxPlayer, direction)
