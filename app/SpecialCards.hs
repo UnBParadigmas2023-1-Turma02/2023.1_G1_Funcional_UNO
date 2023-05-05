@@ -11,10 +11,7 @@ buyCardFromDeck :: Deck -> Player -> (Deck, Player)
 buyCardFromDeck (c:cs) (name, hand) = (cs, (name, hand ++ [c]))
 
 getCardType :: Card -> TypeCard
-getCardType (Card Reverse _ _) = Reverse
-getCardType (Card Block _ _) = Block
-getCardType (Card Buy _ _) = Buy
-getCardType (Card Number _ _) = Number
+getCardType (Card cardType _ _) = cardType
 
 chooseNewColor :: Color
 chooseNewColor = Red
@@ -61,10 +58,10 @@ dealBuyCard g@(deck, players, topCard, idxPlayer, direction) =
             let corEscolhida = chooseNewColor
             let newTopCard = Card typeCard corEscolhida value
             let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy 
-            (newDeck, updatePlayerList idxPlayer playerAfterBuying players, newTopCard, idxPlayer+1, direction)
+            (newDeck, updatePlayerList (idxPlayer + (1 * direction) `modAcceptingNegative` length players) playerAfterBuying players, newTopCard, (idxPlayer + (1 * direction) `modAcceptingNegative` length players), direction)
           else
             let (newDeck, playerAfterBuying) = buyCardFromDeckNTimes deck (players !! (idxPlayer + (1 * direction) `modAcceptingNegative` length players)) numberOfBuy
-            in (newDeck, updatePlayerList idxPlayer playerAfterBuying players, topCard, idxPlayer+1, direction)
+            in (newDeck, updatePlayerList (idxPlayer + (1 * direction) `modAcceptingNegative` length players) playerAfterBuying players, topCard, (idxPlayer + (1 * direction) `modAcceptingNegative` length players), direction)
 
  
 dealSpecialCards :: GameState -> GameState

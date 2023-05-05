@@ -36,7 +36,7 @@ Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcioname
 
 ## Instalação
 **Linguagens**: Haskell<br>
-**Tecnologias**: GHCi e Cabal (para a biblioteca random).<br>
+**Tecnologias**: GHCi (versão 9.2.7) e Cabal (3.6.2.0).<br>
 
 Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os seguintes passos:
 
@@ -61,7 +61,7 @@ TEMPO: +/- 15min
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
 | Cibele Freitas Goudinho - @CibeleG | - | - |
-| Guilherme Brito Vilas Boas - @dev-brito | - | - |
+| Guilherme Brito Vilas Boas - @dev-brito | Desenvolvimento de Lógica para [Cartas Especiais](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/blob/main/app/SpecialCards.hs), Integração da lógica de Cartas Especiais para a Lógica Geral do Jogo | Excelente |
 | Irwin Schmitt - @irwinschmitt | - | - |
 | Júlia Farias Sousa - @julisous | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Cibele| Boa |
 | Lameque Fernandes Azevedo - @LamequeFernandes | - | - |
@@ -73,6 +73,7 @@ TEMPO: +/- 15min
 
 (i) Lições Aprendidas:
 * Como desenvolver um projeto com base no Paradigma Funcional. Assim, a manipulação de listas (variáveis imutáveis) e recursividade foram elementos muito explorados, elementos muitas vezes negligenciados quando trabalhando com outros paradigmas e linguagens não similares ao Haskell, por exemplo.
+* Iteração Vs. Recursão -> Em outros paradigmas e linguagens o uso de loops é comum nos programas, mas sabemos que toda iteração pode ser transformada em uma Recursão. No Haskell, o lado recursivo dos Loops é muito encorajado. Logo, nesse trabalho foi exercitado essa tradução de Algoritmos Iterativos em Recursivos, como por exemplo na [função responsável pela compra de cartas do topo 'n' vezes](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/blob/main/app/SpecialCards.hs#L34)
 
 (ii) Percepções:
 * Por estarem condicionados e acostumados com o Paradigma Procedural, muitas vezes, de primeira, era complexo ver uma solução totalmente voltada ao Paradigma Funcional.
@@ -80,6 +81,7 @@ TEMPO: +/- 15min
 (iii) Contribuições e Fragilidades:
 * Verificar e validar entradas do usuário.
 * Funcionalidades de diferentes modos de jogadas, como, por exemplo, jogar sequências.
+* Jogo condicionado ao caminho feliz, não tem muitos tratamentos e validações, seria interessante adição desses tratamentos
 
 (iV) Trabalhos Futuros:
 * Modo de jogo por LAN (jogadores na mesma rede, mas em computadores diferentes).

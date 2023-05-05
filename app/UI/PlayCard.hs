@@ -47,8 +47,8 @@ theMap :: A.AttrMap
 theMap =
   A.attrMap
     V.defAttr
-    [ (D.buttonAttr, V.black `on` V.white),
-      (D.buttonSelectedAttr, bg V.yellow)
+    [
+      (D.buttonSelectedAttr, bg V.black)
     ]
 
 theApp :: Card -> M.App (D.Dialog Card Card) e Card
@@ -61,10 +61,22 @@ theApp card =
       M.appAttrMap = const theMap
     }
 
-renderPlayCard :: GameState -> IO ()
+shouldChoseCardColor :: Card -> Bool
+shouldChoseCardColor (Card Only_Color NoColor _) = True
+shouldChoseCardColor (Card Buy NoColor Four) = True
+shouldChoseCardColor _ = False
+
+getSelectedCard :: D.Dialog a Card -> Maybe Card
+getSelectedCard d =
+  case D.dialogSelection d of
+    Just (card1, _) -> Just card1
+    Nothing -> Nothing
+
+renderPlayCard :: GameState -> IO (Maybe Card)
 renderPlayCard gameState = do
   let (_, players, topCard, turn, _) = gameState
   let currentPlayer = players !! turn
 
   d <- M.defaultMain (theApp topCard) (initialState currentPlayer)
-  return ()
+  let selectedCard = getSelectedCard d
+  return selectedCard

@@ -90,8 +90,11 @@ playTurn gameState@(deck, players, topCard, idxPlayer, direction) player = do
   -- Imprime o Jogador + Mão
   putStrLn (playerToString player)
 
-  -- Não faz nada ainda
-  -- renderPlayCard gameState
+  -- retorna a carda selecionada ou nothing se comprou uma
+  card <- renderPlayCard gameState
+  case card of
+    Just card -> putStrLn (cardToString card)
+    Nothing -> putStrLn "You didn't choose a card!"
 
   -- Compra carta do monte
   putStrLn "Quer comprar uma carta do monte? (s/n)"

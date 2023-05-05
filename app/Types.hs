@@ -11,7 +11,7 @@ module Types (
 
 data TypeCard = Number | Buy | Reverse | Block | Only_Color deriving (Show, Eq, Ord)
 data Color = Red | Blue | Green | Yellow | NoColor deriving (Show, Eq, Ord)
-data Value = One | Two | Three | Four | Five | Six | Seven | Eight | Nine | NoValue deriving (Show, Eq, Ord)
+data Value = Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine | NoValue deriving (Show, Eq, Ord)
 data Card = Card TypeCard Color Value deriving (Show, Eq, Ord)
 type Deck = [Card]
 type Hand = [Card]
