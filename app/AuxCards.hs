@@ -3,9 +3,7 @@ module AuxCards
 ,yellowCards
 ,blueCards
 ,greenCards
-,cardValueNumber
 ,arrayColorCard
-,getIndexCardSpecial
 ,getIndexCard
 ) where 
 
@@ -25,6 +23,8 @@ redCards = [ "\x1b[31m0\x1b[0m"
                    , "\x1b[31m+2\x1b[0m"
                    , "\x1b[31m<--->\x1b[0m"
                    , "\x1b[31mBLOCK\x1b[0m"
+                   ,"🌈"
+                   , "+4🌈"
                    ]
 
 yellowCards = [ "\x1b[33m0\x1b[0m"
@@ -74,31 +74,27 @@ greenCards = [ "\x1b[32m0\x1b[0m"
 
 
 arrayColorCard :: Color -> [String]
-arrayColorCard (Red)    = redCards
-arrayColorCard (Blue)   = blueCards
-arrayColorCard (Green)  = greenCards
-arrayColorCard (Yellow) = yellowCards
-arrayColorCard _        = [""]
+arrayColorCard (Red)     = redCards
+arrayColorCard (Blue)    = blueCards
+arrayColorCard (Green)   = greenCards
+arrayColorCard (Yellow)  = yellowCards
+arrayColorCard (NoColor) = redCards
 
-cardValueNumber :: Value -> Int
-cardValueNumber (Zero)    = 0
-cardValueNumber (One)     = 1
-cardValueNumber (Two)     = 2
-cardValueNumber (Three)   = 3
-cardValueNumber (Four)    = 4
-cardValueNumber (Five)    = 5
-cardValueNumber (Six)     = 6
-cardValueNumber (Seven)   = 7
-cardValueNumber (Eight)   = 8
-cardValueNumber (Nine)    = 9
-cardValueNumber _         = -1
-
-getIndexCardSpecial :: TypeCard -> Int
-getIndexCardSpecial (Reverse) = 11
-getIndexCardSpecial (Block)   = 12
-getIndexCardSpecial _         = -1
 
 getIndexCard :: Card -> Int
-getIndexCard (Card cardType color value)
-    | cardType == Number = cardValueNumber value
-    | cardType == Reverse || cardType == Block = getIndexCardSpecial cardType
+getIndexCard (Card Number _ Zero)     = 0
+getIndexCard (Card Number _ One)      = 1
+getIndexCard (Card Number _ Two)      = 2
+getIndexCard (Card Number _ Three)    = 3
+getIndexCard (Card Number _ Four)     = 4
+getIndexCard (Card Number _ Five)     = 5
+getIndexCard (Card Number _ Six)      = 6
+getIndexCard (Card Number _ Seven)    = 7
+getIndexCard (Card Number _ Eight)    = 8
+getIndexCard (Card Number _ Nine)     = 9
+getIndexCard (Card Buy _ Two)         = 10
+getIndexCard (Card Reverse _ NoValue) = 11
+getIndexCard (Card Block _ NoValue)   = 12
+getIndexCard (Card Only_Color _ _)    = 13
+getIndexCard (Card Buy _ Four)        = 14
+getIndexCard _                        = -1
