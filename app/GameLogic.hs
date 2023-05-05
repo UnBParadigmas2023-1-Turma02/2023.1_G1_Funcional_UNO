@@ -74,9 +74,6 @@ selectValidCard player topCard = do
         else do
           putStrLn ("Carta Invalida!")
           selectValidCard player topCard
-  where
-    allCardsInvalid = all (not . validCard topCard) (getPlayerHand player)
-
 
 getPlayerHand :: Player -> [Card]
 getPlayerHand (_, hand) = hand
@@ -139,8 +136,5 @@ playGame (deck, players, topCard, idxPlayer, direction) = do
   -- Faz a nova jogada e salva no novo GameState
   newGameState <- playTurn (deck, players, topCard, idxPlayer, direction) curPlayer
   let (newDeck, newPlayers, newTopCard, newIdxPlayer, newDirection) = newGameState
-
-  -- LEO: VERIFICAR UNO
-  --      TERMINAR JOGO
 
   playGame (newDeck, newPlayers, newTopCard, newIdxPlayer, newDirection)

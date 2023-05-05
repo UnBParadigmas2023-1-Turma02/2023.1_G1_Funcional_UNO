@@ -69,7 +69,7 @@ TEMPO: +/- 15min
 | Irwin Schmitt - @irwinschmitt | - | - |
 | Júlia Farias Sousa - @julisous | Desenvolvimento da [validGame](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/validGame) em dupla com a Cibele| Boa |
 | Lameque Fernandes Azevedo - @LamequeFernandes | - | - |
-| Leonardo Milomes Vitoriano - @leonardomilv3 | - | - |
+| Leonardo Milomes Vitoriano - @leonardomilv3 | Desenvolvimento da [logicaGeral](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/logicaGeral) em dupla com o membro Victor:<br>- Leitura dos jogadores e distribuição da mão deles<br>- Parte da implementação da função playGame e playTurn: verificar se o jogador está de UNO; encerrar o jogo; validar mão do jogador e carta jogada no topo  | Excelente |
 | Thaís Rebouças de Araujo - @Thais-ra | - | - |
 | Victor Hugo Oliveira Leão - @victorleaoo | Desenvolvimento da [logicaGeral](https://github.com/UnBParadigmas2023-1-Turma02/2023.1_G1_Funcional_UNO/tree/logicaGeral) em dupla com o membro Leonardo:<br>- Criação do monte de cartas (deck) e seu embaralhamento<br>- Parte da implementação da função playGame e playTurn: funcionamento inicial da lista rotativa de jogadores; comprar carta do monte; manipulação (selecionar e retirar) carta jogada pelo jogador. | Excelente |
 
