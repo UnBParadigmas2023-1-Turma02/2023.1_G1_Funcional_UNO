@@ -32,7 +32,11 @@ Imagem de exemplo dos tipos de cartas presentes no jogo UNO:
 ![image](https://user-images.githubusercontent.com/33530818/236084070-e0f4efdc-a464-4a30-aeba-e958347fa7c8.png)
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+
+![Home](./assets/uno_home.png){ width=100% }
+![Home](./assets/num_jogadores.png){ width=100% }
+![Home](./assets/vez_jogador.png){ width=100% }
+![Home](./assets/wins.png){ width=100% }
 
 ## Instalação
 **Linguagens**: Haskell<br>
