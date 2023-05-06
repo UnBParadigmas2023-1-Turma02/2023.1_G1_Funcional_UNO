@@ -54,7 +54,7 @@ Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os 
 A partir dos passos acima, o jogo já estará sendo executado, assim, só seguir as instruções na tela para jogar. Se divirta! :)
 
 ## Vídeo
-Link para o vídeo no Youtube  https://youtu.be/jAWchJS60tc
+Link para o vídeo no Youtube  https://youtu.be/DLZ7Eg6vu2k
 
 
 ## Participações
