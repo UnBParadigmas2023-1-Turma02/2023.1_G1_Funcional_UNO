@@ -55,7 +55,7 @@ A partir dos passos acima, o jogo já estará sendo executado, assim, só seguir
 
 ## Vídeo
 Link para o vídeo no Youtube  https://youtu.be/jAWchJS60tc
-TEMPO: +/- 15min
+
 
 ## Participações
 
