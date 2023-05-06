@@ -54,13 +54,7 @@ Com as tecnologias acima citadas instaladas, para rodar o jogo/projeto, siga os 
 A partir dos passos acima, o jogo já estará sendo executado, assim, só seguir as instruções na tela para jogar. Se divirta! :)
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
-Procure:
-(i) Introduzir o projeto;
-(ii) Mostrar passo a passo o código, explicando-o, e deixando claro o que é de terceiros, e o que é contribuição real da equipe;
-(iii) Apresentar particularidades do Paradigma, da Linguagem, e das Tecnologias, e
-(iV) Apresentar lições aprendidas, contribuições, pendências, e ideias para trabalhos futuros.
-OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
+Link para o vídeo no Youtube  https://youtu.be/jAWchJS60tc
 TEMPO: +/- 15min
 
 ## Participações
